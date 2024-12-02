@@ -1,0 +1,14 @@
+{
+  "name": "aoc2024",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "scripts": {
+    "create": "bun run scripts/create-task.ts"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
