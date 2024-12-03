@@ -6,15 +6,15 @@ Language: Typescript
 
 Solved days:
 
-- [x] [Day 1](./src/tasks/day01/)
-  - [x] [Puzzle 1](./src/tasks/day01/puzzle1.ts)
-  - [x] [Puzzle 2](./src/tasks/day01/puzzle2.ts)
-- [x] [Day 2](./src/tasks/day02/)
-  - [x] [Puzzle 1](./src/tasks/day02/puzzle1.ts)
-  - [x] [Puzzle 2](./src/tasks/day02/puzzle2.ts)
-- [x] [Day 3](./src/tasks/day03/)
-  - [x] [Puzzle 1](./src/tasks/day03/puzzle1.ts)
-  - [x] [Puzzle 2](./src/tasks/day03/puzzle2.ts)
+- [x] [Day 1](./tasks/day01/)
+  - [x] [Puzzle 1](./tasks/day01/puzzle1.ts)
+  - [x] [Puzzle 2](./tasks/day01/puzzle2.ts)
+- [x] [Day 2](./tasks/day02/)
+  - [x] [Puzzle 1](./tasks/day02/puzzle1.ts)
+  - [x] [Puzzle 2](./tasks/day02/puzzle2.ts)
+- [x] [Day 3](./tasks/day03/)
+  - [x] [Puzzle 1](./tasks/day03/puzzle1.ts)
+  - [x] [Puzzle 2](./tasks/day03/puzzle2.ts)
 - [ ] Day 4
 - [ ] Day 5
 - [ ] Day 6
