@@ -39,19 +39,25 @@ const createTask = async (day: number) => {
             ];
 
             for (const [src, dest] of templateFiles) {
-                const sourceFile = Bun.file(`template/${puzzle}/${src}`);
+                const sourceFile = Bun.file(`template/${src}`);
                 const destPath = `${puzzleDir}/${dest}`;
 
                 if (src === 'algorithm.ts') {
                     // Read and modify algorithm.ts content
                     const content = await sourceFile.text();
                     const today = new Date().toISOString().split('T')[0];
+                    const puzzleNumber = puzzle.replace('puzzle', '');
+                    const paddedDay = String(day).padStart(2, '0');
+
                     const updatedContent = content
-                        .replace('// DAY: [X]', `// DAY: ${day}`)
-                        .replace('// DATE OF COMPLETION: [Y]', `// DATE OF COMPLETION: ${today}`);
+                        .replace(/\/\/ DAY: \[X\]/g, `// DAY: ${day}`)
+                        .replace(/\/\/ PUZZLE: \[Z\]/g, `// PUZZLE: ${puzzleNumber}`)
+                        .replace(/\/\/ DATE OF COMPLETION: \[Y\]/g, `// DATE OF COMPLETION: ${today}`)
+                        .replace(/\[XX\]/g, paddedDay)
+                        .replace(/\[Z\]/g, puzzleNumber);
+
                     await Bun.write(destPath, updatedContent);
                 } else {
-                    // Direct file copy for other files
                     await Bun.write(destPath, sourceFile);
                 }
             }
@@ -62,7 +68,7 @@ const createTask = async (day: number) => {
         console.error('Failed to create task:', error);
         process.exit(1);
     }
-}
+};
 
 // Get day number from command line argument
 const day = parseInt(process.argv[2]);

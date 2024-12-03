@@ -1,3 +1,14 @@
+
+export const readInput = async (fileName: string): Promise<string> => {
+    try {
+        const input = Bun.file(fileName);
+        const text = await input.text();
+        return text;
+    } catch (error) {
+        throw new Error(`Reading file failed: ${error}`);
+    }
+}
+
 export const readInputLines = async (fileName: string): Promise<string[]> => {
     try {
         const input = Bun.file(fileName);

@@ -6,7 +6,8 @@
     "@types/bun": "latest"
   },
   "scripts": {
-    "create": "bun run scripts/create-task.ts"
+    "create": "bun run scripts/create-task.ts",
+    "run-task": "bun scripts/run-task.ts"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
