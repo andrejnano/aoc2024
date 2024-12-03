@@ -24,32 +24,40 @@ const createTask = async (day: number) => {
         // Create task directory
         await mkdir(taskDir);
 
-        // Copy template files using Bun's file API
-        const templateFiles = [
-            ['algorithm.ts', 'algorithm.ts'],
-            ['INPUT', 'INPUT'],
-            ['OUTPUT', 'OUTPUT']
-        ];
+        // Define puzzle directories
+        const puzzles = ['puzzle1', 'puzzle2'];
 
-        for (const [src, dest] of templateFiles) {
-            const sourceFile = Bun.file(`template/${src}`);
-            const destPath = `${taskDir}/${dest}`;
+        for (const puzzle of puzzles) {
+            const puzzleDir = `${taskDir}/${puzzle}`;
+            await mkdir(puzzleDir);
 
-            if (src === 'algorithm.ts') {
-                // Read and modify algorithm.ts content
-                const content = await sourceFile.text();
-                const today = new Date().toISOString().split('T')[0];
-                const updatedContent = content
-                    .replace('// DAY: [X]', `// DAY: ${day}`)
-                    .replace('// DATE OF COMPLETION: [Y]', `// DATE OF COMPLETION: ${today}`);
-                await Bun.write(destPath, updatedContent);
-            } else {
-                // Direct file copy for other files
-                await Bun.write(destPath, sourceFile);
+            // Copy template files for each puzzle
+            const templateFiles = [
+                ['algorithm.ts', 'algorithm.ts'],
+                ['INPUT', 'INPUT'],
+                ['OUTPUT', 'OUTPUT']
+            ];
+
+            for (const [src, dest] of templateFiles) {
+                const sourceFile = Bun.file(`template/${puzzle}/${src}`);
+                const destPath = `${puzzleDir}/${dest}`;
+
+                if (src === 'algorithm.ts') {
+                    // Read and modify algorithm.ts content
+                    const content = await sourceFile.text();
+                    const today = new Date().toISOString().split('T')[0];
+                    const updatedContent = content
+                        .replace('// DAY: [X]', `// DAY: ${day}`)
+                        .replace('// DATE OF COMPLETION: [Y]', `// DATE OF COMPLETION: ${today}`);
+                    await Bun.write(destPath, updatedContent);
+                } else {
+                    // Direct file copy for other files
+                    await Bun.write(destPath, sourceFile);
+                }
             }
         }
 
-        console.log(`✨ Created task directory for day ${day}`);
+        console.log(`✨ Created task directory for day ${day} with puzzles 1 and 2`);
     } catch (error) {
         console.error('Failed to create task:', error);
         process.exit(1);
