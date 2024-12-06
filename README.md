@@ -18,7 +18,9 @@ Solved days:
 - [x] [Day 4](./tasks/day04/)
   - [x] [Puzzle 1](./tasks/day04/puzzle1/algorithm.ts)
   - [x] [Puzzle 2](./tasks/day04/puzzle2/algorithm.ts)
-- [ ] Day 5
+- [x] [Day 5](./tasks/day05/)
+  - [x] [Puzzle 1](./tasks/day05/puzzle1/algorithm.ts)
+  - [x] [Puzzle 2](./tasks/day05/puzzle2/algorithm.ts)
 - [ ] Day 6
 - [ ] Day 7
 - [ ] Day 8
